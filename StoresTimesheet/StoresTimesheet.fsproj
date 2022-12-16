@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+    <WarningsAsErrors>FS0025</WarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="paket.references" />
+    <Compile Include="Types.fs" />
+    <Compile Include="Helpers\File.fs" />
+    <Compile Include="Helpers\TimeOnly.fs" />
+    <Compile Include="Helpers\List.fs" />
+    <Compile Include="Helpers\String.fs" />
+    <Compile Include="View\Constants.fs" />
+    <Compile Include="View\Place.fs" />
+    <Compile Include="View\PageLayout.fs" />
+    <Compile Include="View\View.fs" />
+    <Content Include="View\.editorconfig" />
+    <Compile Include="Render.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Giraffe.ViewEngine.Svg\Giraffe.ViewEngine.Svg.fsproj" />
+  </ItemGroup>
+  <Import Project="..\.paket\Paket.Restore.targets" />
+</Project>

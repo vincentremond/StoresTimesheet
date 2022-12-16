@@ -1,0 +1,19 @@
+source https://api.nuget.org/v3/index.json
+
+storage: none
+framework: auto-detect
+
+nuget FSharp.Core
+nuget Giraffe.ViewEngine
+
+group Tests
+
+    storage: none
+    source https://api.nuget.org/v3/index.json
+
+    nuget Microsoft.NET.Test.Sdk
+    nuget coverlet.collector
+    nuget NUnit
+    nuget NUnit.Analyzers
+    nuget NUnit3TestAdapter
+    nuget Unquote
