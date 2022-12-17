@@ -50,7 +50,9 @@ module Style =
 
     let _fill color = css "fill" (Color.value color)
     let _text_align a = css "text-align" (TextAlign.value a)
-    let _letter_spacing spacing = css "letter-spacing" (Unit.value spacing)
+
+    let _letter_spacing spacing =
+        css "letter-spacing" (Unit.value spacing)
 
     let _opacity (f: float) = css "opacity" (string f)
     let _stroke color = css "stroke" (Color.value color)

@@ -12,12 +12,14 @@
     <Compile Include="Helpers\TimeOnly.fs" />
     <Compile Include="Helpers\List.fs" />
     <Compile Include="Helpers\String.fs" />
+    <Compile Include="Helpers\MemoryStream.fs" />
     <Compile Include="View\Constants.fs" />
     <Compile Include="View\Place.fs" />
     <Compile Include="View\PageLayout.fs" />
     <Compile Include="View\View.fs" />
     <Content Include="View\.editorconfig" />
     <Compile Include="Render.fs" />
+    <Compile Include="Inkscape.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
   <ItemGroup>

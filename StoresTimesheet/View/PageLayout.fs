@@ -114,31 +114,31 @@ module PageLayout =
 
             // to cut
             let cutMargin = 1.<mm>
+
             rect [
-                _x (Unit.mm (x+ cutMargin))
+                _x (Unit.mm (x + cutMargin))
                 _y (Unit.mm (toCutY + cutMargin))
                 _width (Unit.mm (width - cutMargin))
                 _height (Unit.mm (toCutHeight - cutMargin))
                 _style [ _fill (Color.url "#diagonalHatch") ]
             ]
-            
+
             let textCenterX = Unit.mm (x + (width / 2.0))
             let textCenterY = Unit.mm (dayBackgroundY + (verticalSize / 2.0))
+
             text [
-                _id "day-name"
-                _x textCenterX
-                _y textCenterY
+                _x (Unit.mm (dayBackgroundY + (verticalSize / 2.0)))
+                _y (Unit.mm (-1. * (x + (width / 2.0))))
                 _text_anchor TextAnchor.Middle
                 _dominant_baseline DominantBaseline.Central
+                _transform_origin (TransformOrigin.xy (Unit.none 0.) (Unit.none 0.))
                 _transform [ (Transform.rotate 90.<deg>) ]
-                _transform_origin (TransformOrigin.xy textCenterX textCenterY)
                 _style [
                     _text_align TextAlign.Center
                     _font_family [ FontFamily.generic SansSerif ]
                     _fill (Color.named Black)
                     _letter_spacing (Unit.px 3.<px>)
                 ]
-                              
             ] [ str (dayName |> String.toUpperInvariant) ]
         ]
 

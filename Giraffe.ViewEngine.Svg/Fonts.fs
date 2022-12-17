@@ -1,11 +1,12 @@
 ﻿namespace Giraffe.ViewEngine.Svg
+
 type ComputedProperty =
     | Inherit
     | Initial
     | Revert
     | RevertLayer
     | Unset
-    
+
     static member value =
         function
         | Inherit -> "inherit"
@@ -13,6 +14,7 @@ type ComputedProperty =
         | Revert -> "revert"
         | RevertLayer -> "revert-layer"
         | Unset -> "unset"
+
 type FontWeight =
     | Normal
     | Bold
@@ -108,7 +110,7 @@ type FontFamily =
         | Generic x -> FontFamilyGeneric.value x
         | Computed x -> ComputedProperty.value x
         | Named x -> $"\"{x}\"" // TODO need escaping ?
-        
+
     static member generic v = Generic v
     static member computed v = Computed v
     static member named v = Named v
@@ -143,4 +145,3 @@ and FontFamilyGeneric =
         | Emoji -> "emoji"
         | Fangsong -> "fangsong"
         | Math -> "math"
-    

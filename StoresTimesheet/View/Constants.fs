@@ -14,7 +14,7 @@ type ColorSet = {
 module C =
 
     let daysPerWeek = 7.
-    
+
     let pageWidth = 297.<mm>
     let pageHeight = 210.<mm>
 

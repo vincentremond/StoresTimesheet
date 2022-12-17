@@ -44,7 +44,7 @@ module Place =
                         _font_style Italic
                         _fill colorSet.SecondaryText
                     ]
-                ] [ str place.Description ]
+                ] [ str $"{place.Description}" ]
             ]
 
             let openingHours = place.OpeningHours |> Map.tryFind day |> Option.defaultValue []
@@ -67,8 +67,6 @@ module Place =
                 _y1 (Unit.mm (y + C.lineHeight))
                 _x2 (Unit.mm (C.pageWidth - C.pageMargins.right))
                 _y2 (Unit.mm (y + C.lineHeight))
-                _style [
-                    _stroke (Color.named Black)
-                ]
+                _style [ _stroke (Color.named Black) ]
             ]
         ]

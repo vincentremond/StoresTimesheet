@@ -2,9 +2,16 @@ STORAGE: NONE
 RESTRICTION: == net7.0
 NUGET
   remote: https://api.nuget.org/v3/index.json
+    FreeSpire.PDF (8.6)
+      System.Drawing.Common (>= 6.0)
+      System.Text.Encoding.CodePages (>= 6.0)
     FSharp.Core (7.0)
     Giraffe.ViewEngine (1.4)
       FSharp.Core (>= 5.0)
+    Microsoft.Win32.SystemEvents (7.0)
+    System.Drawing.Common (7.0)
+      Microsoft.Win32.SystemEvents (>= 7.0)
+    System.Text.Encoding.CodePages (7.0)
 
 GROUP Tests
 STORAGE: NONE

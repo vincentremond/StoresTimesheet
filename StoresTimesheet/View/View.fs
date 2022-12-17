@@ -30,7 +30,7 @@ module View =
             match weekday with
             | Lun -> 0, @"Lundi", PaleVioletRed
             | Mar -> 1, @"Mardi", Coral
-            | Mer -> 2, @"Mercredi", Gold 
+            | Mer -> 2, @"Mercredi", Gold
             | Jeu -> 3, @"Jeudi", LightYellow
             | Ven -> 4, @"Vendredi", PaleGreen
             | Sam -> 5, @"Samedi", LightSkyBlue
@@ -68,7 +68,7 @@ module View =
                 _style [ _font_family [ FontFamily.generic SansSerif ] ]
             ] [ str dayName ]
 
-            g [ _id "stores" ] (stores |> List.mapi (Place.render Lun))
+            g [ _id "stores" ] (stores |> List.mapi (Place.render weekday))
 
             PageLayout.render index dayName color
         ]
