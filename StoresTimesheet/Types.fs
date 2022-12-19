@@ -22,18 +22,21 @@ type WeekDay =
 
 type Place =
     {
+        Icon: string
         Name: string
         Description: string
         OpeningHours: Map<WeekDay, (TimeOnly * TimeOnly) list>
     }
 
     static member create
+        icon
         name
         description
         (openingHours: (WeekDay list * ((Hour * Minute) * (Hour * Minute)) list) list)
         =
 
         {
+            Icon = icon
             Name = name
             Description = description
             OpeningHours =

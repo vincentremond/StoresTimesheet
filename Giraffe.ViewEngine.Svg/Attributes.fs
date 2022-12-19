@@ -7,11 +7,15 @@ module Attributes =
 
     let private sizeAttr n size = attr n (Unit.value size)
     let private colorAttr n color = attr n (Color.value color)
+    let private floatAttr n (f: float) = attr n (string f)
 
     let _text_anchor a =
         attr "text-anchor" (TextAnchor.toString a)
 
     let _xmlns = attr "xmlns"
+    let _xmlns__xlink = attr "xmlns:xlink"
+    let _xlink__href = attr "xlink:href"
+
     let _x = sizeAttr "x"
     let _y = sizeAttr "y"
     let _x1 = sizeAttr "x1"
@@ -77,8 +81,12 @@ module Attributes =
     let _style (values: CssProperty list) =
         attr "style" (values |> List.map (fun x -> $"%s{x.Name}:%s{x.Value}") |> String.concat ";")
 
+    let _std_deviation = floatAttr "stdDeviation"
+    let _type = attr "type"
+    let _values = attr "values"
     let _width = sizeAttr "width"
     let _height = sizeAttr "height"
+    let _preserve_aspect_ratio = attr "preserveAspectRatio"
     let _id = attr "id"
 
     [<RequireQualifiedAccess>]

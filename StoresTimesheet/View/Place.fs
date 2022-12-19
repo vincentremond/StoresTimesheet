@@ -10,7 +10,6 @@ module Place =
 
     let render day (index: int) (place: Place) =
 
-        let x = C.pageMargins.left + C.textSpacing
         let y = C.secondLineY + ((float index) * C.lineHeight)
 
         let colorSet = if index % 2 = 0 then C.colorSet1 else C.colorSet2
@@ -25,8 +24,23 @@ module Place =
                 _style [ _fill colorSet.Background ]
             ]
 
+            let icon blurred =
+                image [
+                    _x (Unit.mm (C.pageMargins.left + C.iconMargin))
+                    _y (Unit.mm (y + C.iconMargin))
+                    _width (Unit.mm (C.lineHeight - (C.iconMargin * 2.0)))
+                    _height (Unit.mm (C.lineHeight - (C.iconMargin * 2.0)))
+                    _preserve_aspect_ratio "none"
+                    _xlink__href (Emoji.getEmojiAsBase64 place.Icon)
+                    if blurred then
+                        _style [ _filter "url(#blur)" ]
+                ]
+
+            icon true
+            icon false
+
             text [
-                _x (Unit.mm x)
+                _x (Unit.mm (C.pageMargins.left + C.lineHeight))
                 _y (Unit.mm (y - C.textSpacing + C.lineHeight))
                 _style [ _font_family [ FontFamily.generic SansSerif ] ]
             ] [
@@ -34,10 +48,10 @@ module Place =
                     _style [
                         _font_size (FontSize.absolute Small)
                         _font_weight Bold
-                        _fill (Color.named Black)
+                        _fill colorSet.PrimaryText
                     ]
                 ] [ str place.Name ]
-                tspan [] [ str " " ]
+                tspan [] [ str (String.ofChars 2 C.nbsp) ]
                 tspan [
                     _style [
                         _font_size (FontSize.absolute XSmall)

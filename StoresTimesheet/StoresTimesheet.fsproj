@@ -13,6 +13,7 @@
     <Compile Include="Helpers\List.fs" />
     <Compile Include="Helpers\String.fs" />
     <Compile Include="Helpers\MemoryStream.fs" />
+    <Compile Include="Helpers\Emoji.fs" />
     <Compile Include="View\Constants.fs" />
     <Compile Include="View\Place.fs" />
     <Compile Include="View\PageLayout.fs" />

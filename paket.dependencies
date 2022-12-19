@@ -3,6 +3,7 @@ source https://api.nuget.org/v3/index.json
 storage: none
 framework: auto-detect
 
+nuget EmojiOne
 nuget FreeSpire.PDF
 nuget Giraffe.ViewEngine
 

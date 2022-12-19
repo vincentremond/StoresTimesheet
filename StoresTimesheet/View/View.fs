@@ -40,6 +40,7 @@ module View =
             _width (Unit.mm C.pageWidth)
             _height (Unit.mm C.pageHeight)
             _xmlns "http://www.w3.org/2000/svg"
+            _xmlns__xlink "http://www.w3.org/1999/xlink"
         ] [
             defs [] [
                 pattern [
@@ -60,8 +61,36 @@ module View =
                         ]
                     ]
                 ]
+                filter [
+                    _id "blur"
+                    _x (Unit.none -0.5)
+                    _y (Unit.none -0.5)
+                    _width (Unit.none 2.)
+                    _height (Unit.none 2.)
+                    _style [ _color_interpolation_filters ColorInterpolationFilters.LinearRGB ]
+                ] [
+                    fe_color_matrix [
+                        _type "matrix"
+                        _values
+                            """0.000  0.000  0.000  1.000  0.000 
+0.000  0.000  0.000  1.000  0.000 
+0.000  0.000  0.000  1.000  0.000 
+0.000  0.000  0.000  1.000  0.000"""
+                    ] []
+                    fe_gaussian_blur [ _std_deviation 2. ] []
+                ]
             ]
 
+            // global background
+            rect [
+                _x (Unit.none 0.)
+                _y (Unit.none 0.)
+                _width (Unit.mm C.pageWidth)
+                _height (Unit.mm C.pageHeight)
+                _style [ _fill (Color.named White) ]
+            ]
+            
+            
             text [
                 _x (Unit.mm (C.pageMargins.left + C.textSpacing))
                 _y (Unit.mm (C.secondLineY - C.textSpacing))

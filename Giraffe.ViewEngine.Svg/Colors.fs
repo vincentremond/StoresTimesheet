@@ -12,6 +12,7 @@ type NamedColor =
     | PaleGreen
     | LightSkyBlue
     | Plum
+    | DimGray
 
     static member value =
         function
@@ -26,6 +27,7 @@ type NamedColor =
         | PaleGreen -> "palegreen"
         | LightSkyBlue -> "lightskyblue"
         | Plum -> "plum"
+        | DimGray -> "dimgray"
 
 [<RequireQualifiedAccess>]
 

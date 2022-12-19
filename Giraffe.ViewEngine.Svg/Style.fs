@@ -58,3 +58,17 @@ module Style =
     let _stroke color = css "stroke" (Color.value color)
     let _stroke_width v = css "stroke-width" (Unit.value v)
     let _stroke_opacity (f: float) = css "stroke-opacity" (string f)
+
+    let _filter = css "filter"
+
+    type ColorInterpolationFilters =
+        | SRGB
+        | LinearRGB
+
+        static member value =
+            function
+            | SRGB -> "sRGB"
+            | LinearRGB -> "linearRGB"
+
+    let _color_interpolation_filters v =
+        css "color-interpolation-filters" (ColorInterpolationFilters.value v)

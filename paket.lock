@@ -2,6 +2,7 @@ STORAGE: NONE
 RESTRICTION: == net7.0
 NUGET
   remote: https://api.nuget.org/v3/index.json
+    EmojiOne (4.5)
     FreeSpire.PDF (8.6)
       System.Drawing.Common (>= 6.0)
       System.Text.Encoding.CodePages (>= 6.0)

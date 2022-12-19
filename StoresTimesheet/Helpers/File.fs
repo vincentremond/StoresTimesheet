@@ -7,3 +7,4 @@ module Path =
 module File =
 
     let writeAllText (path: string) (text: string) = System.IO.File.WriteAllText(path, text)
+    let readAllBytes (path: string) = System.IO.File.ReadAllBytes(path)

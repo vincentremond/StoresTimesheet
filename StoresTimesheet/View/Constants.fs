@@ -13,6 +13,8 @@ type ColorSet = {
 [<RequireQualifiedAccess>]
 module C =
 
+    let nbsp = '\u00A0'
+
     let daysPerWeek = 7.
 
     let pageWidth = 297.<mm>
@@ -41,12 +43,18 @@ module C =
         (pageWidth - leftSpaceForLabels - pageMargins.left - pageMargins.right)
         / float (lastHour - firstHour + 1<hour>)
 
-    let private initColorSet h c = {
-        PrimaryText = Color.hsl h (35 + c) (18 + c)
-        SecondaryText = Color.hsl h (10 + c) (8 + c)
-        Opened = Color.hsl h (35 + c) (30 + c)
-        Background = Color.hsl h (22 + c) (70 + c)
+    let colorSet1 = {
+        PrimaryText = Color.named Black
+        SecondaryText = Color.named DimGray
+        Opened = Color.hex "#2aeba7"
+        Background = Color.hex "#d9f0e8" // PaleGreen
     }
 
-    let colorSet1 = initColorSet 102 0
-    let colorSet2 = initColorSet 70 10
+    let colorSet2 = {
+        PrimaryText = Color.named Black
+        SecondaryText = Color.named DimGray
+        Opened = Color.hex "#aaeb2a"
+        Background = Color.hex "#e8f0d9" // PaleYellow
+    }
+
+    let iconMargin = 1.<mm>
