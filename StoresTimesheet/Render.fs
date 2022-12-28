@@ -13,10 +13,7 @@ module Render =
 
             ]
             body [] [
-                let s = DateTime.Now.ToString("yyyy - MM - dd • HH : mm : ss")
-                Console.Clear()
-                Console.WriteLine(s) // TODO VRM - remove
-                p [] [ str s ]
+                p [] [ str (DateTime.Now.ToString("yyyy - MM - dd • HH : mm : ss")) ]
                 div [ _style "border: 1px black solid; display: inline-block;" ] [ svg ]
             ]
         ]

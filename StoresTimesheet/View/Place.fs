@@ -61,20 +61,26 @@ module Place =
                 ] [ str $"{place.Description}" ]
             ]
 
-            let openingHours = place.OpeningHours |> Map.tryFind day |> Option.defaultValue []
+            for openingHours, color in
+                [
+                    place.ExtendedOpeningHours, colorSet.ExtendedOpened
+                    place.OpeningHours, colorSet.Opened
+                ] do
 
-            for startTime, endTime in openingHours do
-                let start = TimeOnly.init C.firstHour 0<minute>
-                let fromX = C.hoursStartX + ((startTime - start).TotalHours * C.hourWidth)
-                let width = (endTime - startTime).TotalHours * C.hourWidth
+                let openingHours = openingHours |> Map.tryFind day |> Option.defaultValue []
 
-                rect [
-                    _x (Unit.mm fromX)
-                    _y (Unit.mm y)
-                    _width (Unit.mm width)
-                    _height (Unit.mm C.lineHeight)
-                    _style [ _fill colorSet.Opened ]
-                ]
+                for startTime, endTime in openingHours do
+                    let start = TimeOnly.init C.firstHour 0<minute>
+                    let fromX = C.hoursStartX + ((startTime - start).TotalHours * C.hourWidth)
+                    let width = (endTime - startTime).TotalHours * C.hourWidth
+
+                    rect [
+                        _x (Unit.mm fromX)
+                        _y (Unit.mm y)
+                        _width (Unit.mm width)
+                        _height (Unit.mm C.lineHeight)
+                        _style [ _fill color ]
+                    ]
 
             line [
                 _x1 (Unit.mm C.pageMargins.left)

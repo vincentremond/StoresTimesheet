@@ -89,8 +89,7 @@ module View =
                 _height (Unit.mm C.pageHeight)
                 _style [ _fill (Color.named White) ]
             ]
-            
-            
+
             text [
                 _x (Unit.mm (C.pageMargins.left + C.textSpacing))
                 _y (Unit.mm (C.secondLineY - C.textSpacing))

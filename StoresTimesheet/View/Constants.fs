@@ -7,6 +7,7 @@ type ColorSet = {
     PrimaryText: Color
     SecondaryText: Color
     Opened: Color
+    ExtendedOpened: Color
     Background: Color
 }
 
@@ -35,7 +36,7 @@ module C =
     let textSpacing = 1.6<mm>
 
     let firstHour = 6<hour>
-    let lastHour = 21<hour>
+    let lastHour = 23<hour>
 
     let hoursStartX = leftSpaceForLabels + pageMargins.left
 
@@ -43,18 +44,16 @@ module C =
         (pageWidth - leftSpaceForLabels - pageMargins.left - pageMargins.right)
         / float (lastHour - firstHour + 1<hour>)
 
-    let colorSet1 = {
+    let mkColorSet h backgroundSaturationAdjustment = {
         PrimaryText = Color.named Black
         SecondaryText = Color.named DimGray
-        Opened = Color.hex "#2aeba7"
-        Background = Color.hex "#d9f0e8" // PaleGreen
+        Opened = Helpers.Color.hexFromHsv h 80. 100. |> Color.hex
+        ExtendedOpened = Helpers.Color.hexFromHsv (h+10.) 45. 80. |> Color.hex
+        Background = Helpers.Color.hexFromHsv h (6. + backgroundSaturationAdjustment) 95. |> Color.hex
     }
 
-    let colorSet2 = {
-        PrimaryText = Color.named Black
-        SecondaryText = Color.named DimGray
-        Opened = Color.hex "#aaeb2a"
-        Background = Color.hex "#e8f0d9" // PaleYellow
-    }
+    let colorSet1 = mkColorSet 120. 0.
+
+    let colorSet2 = mkColorSet 220. 3.
 
     let iconMargin = 1.<mm>
