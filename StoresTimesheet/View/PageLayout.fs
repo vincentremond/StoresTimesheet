@@ -7,7 +7,7 @@ module PageLayout =
     open StoresTimesheet
     open StoresTimesheet.Helpers
 
-    let renderPageLines () = [
+    let renderPageLines yBottom = [
 
         // margin top
         line [
@@ -15,16 +15,22 @@ module PageLayout =
             _y1 (Unit.mm C.pageMargins.top)
             _x2 (Unit.mm (C.pageWidth - C.pageMargins.right))
             _y2 (Unit.mm C.pageMargins.top)
-            _style [ _stroke (Color.named Black) ]
+            _style [
+                _stroke (Color.named Black)
+                _stroke_linecap Square
+            ]
         ]
 
         // margin bottom
         line [
             _x1 (Unit.mm C.pageMargins.left)
-            _y1 (Unit.mm (C.pageHeight - C.pageMargins.bottom))
+            _y1 (Unit.mm yBottom)
             _x2 (Unit.mm (C.pageWidth - C.pageMargins.right))
-            _y2 (Unit.mm (C.pageHeight - C.pageMargins.bottom))
-            _style [ _stroke (Color.named Black) ]
+            _y2 (Unit.mm yBottom)
+            _style [
+                _stroke (Color.named Black)
+                _stroke_linecap Square
+            ]
         ]
 
         // margin left
@@ -32,8 +38,11 @@ module PageLayout =
             _x1 (Unit.mm C.pageMargins.left)
             _y1 (Unit.mm C.pageMargins.top)
             _x2 (Unit.mm C.pageMargins.left)
-            _y2 (Unit.mm (C.pageHeight - C.pageMargins.bottom))
-            _style [ _stroke (Color.named Black) ]
+            _y2 (Unit.mm yBottom)
+            _style [
+                _stroke (Color.named Black)
+                _stroke_linecap Square
+            ]
         ]
 
         // margin right
@@ -41,8 +50,11 @@ module PageLayout =
             _x1 (Unit.mm (C.pageWidth - C.pageMargins.right))
             _y1 (Unit.mm C.pageMargins.top)
             _x2 (Unit.mm (C.pageWidth - C.pageMargins.right))
-            _y2 (Unit.mm (C.pageHeight - C.pageMargins.bottom))
-            _style [ _stroke (Color.named Black) ]
+            _y2 (Unit.mm yBottom)
+            _style [
+                _stroke (Color.named Black)
+                _stroke_linecap Square
+            ]
         ]
 
         // second horizontal line for the header
@@ -51,7 +63,10 @@ module PageLayout =
             _y1 (Unit.mm C.secondLineY)
             _x2 (Unit.mm (C.pageWidth - C.pageMargins.right))
             _y2 (Unit.mm C.secondLineY)
-            _style [ _stroke (Color.named Black) ]
+            _style [
+                _stroke (Color.named Black)
+                _stroke_linecap Square
+            ]
         ]
 
         for index, hour in ([ C.firstHour .. 1<hour> .. C.lastHour ] |> List.mapi') do
@@ -61,10 +76,11 @@ module PageLayout =
                 _x1 (Unit.mm x)
                 _y1 (Unit.mm C.secondLineY)
                 _x2 (Unit.mm x)
-                _y2 (Unit.mm (C.pageHeight - C.pageMargins.bottom))
+                _y2 (Unit.mm yBottom)
                 _style [
                     _stroke (Color.named Black)
-                    _stroke_width (Unit.px 2.<px>)
+                    _stroke_width C.lineWidth.Standard
+                    _stroke_linecap Square
                 ]
             ]
 
@@ -75,10 +91,11 @@ module PageLayout =
                     _x1 (Unit.mm x)
                     _y1 (Unit.mm C.secondLineY)
                     _x2 (Unit.mm x)
-                    _y2 (Unit.mm (C.pageHeight - C.pageMargins.bottom))
+                    _y2 (Unit.mm yBottom)
                     _style [
-                        _stroke (Color.rgb 0 0 0)
-                        _stroke_opacity 0.3
+                        _stroke (Color.rgb 20 20 20)
+                        _stroke_width C.lineWidth.Small
+                        _stroke_linecap Square
                     ]
                 ]
 
@@ -94,7 +111,7 @@ module PageLayout =
 
     ]
 
-    let renderRightDayName index dayName color =
+    let renderRightDayName index (name, color) =
         let verticalSize = C.pageHeight / C.daysPerWeek
         let width = 10.<mm>
         let x = C.pageWidth - width
@@ -123,9 +140,6 @@ module PageLayout =
                 _style [ _fill (Color.url "#diagonalHatch") ]
             ]
 
-            let textCenterX = Unit.mm (x + (width / 2.0))
-            let textCenterY = Unit.mm (dayBackgroundY + (verticalSize / 2.0))
-
             text [
                 _x (Unit.mm (dayBackgroundY + (verticalSize / 2.0)))
                 _y (Unit.mm (-1. * (x + (width / 2.0))))
@@ -139,8 +153,8 @@ module PageLayout =
                     _fill (Color.named Black)
                     _letter_spacing (Unit.px 3.<px>)
                 ]
-            ] [ str (dayName |> String.toUpperInvariant) ]
+            ] [ str (name |> String.toUpperInvariant) ]
         ]
 
-    let render index dayName color =
-        g [] (renderPageLines () @ (renderRightDayName index dayName color))
+    let render index day maxY =
+        g [] (renderPageLines maxY @ (renderRightDayName index day))

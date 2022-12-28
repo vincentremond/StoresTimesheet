@@ -16,4 +16,4 @@ module Inkscape =
         p.WaitForExit()
 
     let convertToPng (inputFile: string) (outputFile: string) =
-        runInkscape $"--export-type png -d 300 --export-filename \"{outputFile}\" \"{inputFile}\""
+        runInkscape $"--export-type png -d 600 --export-filename \"{outputFile}\" \"{inputFile}\""

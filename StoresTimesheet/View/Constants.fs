@@ -14,6 +14,11 @@ type ColorSet = {
 [<RequireQualifiedAccess>]
 module C =
 
+    let lineWidth = {|
+        Small = Unit.mm 0.10<mm>
+        Standard = Unit.mm 0.25<mm>
+    |}
+
     let nbsp = '\u00A0'
 
     let daysPerWeek = 7.
@@ -24,7 +29,6 @@ module C =
     let pageMargins = {|
         top = 5.<mm>
         right = 15.<mm>
-        bottom = 5.<mm>
         left = 17.<mm>
     |}
 
@@ -48,8 +52,10 @@ module C =
         PrimaryText = Color.named Black
         SecondaryText = Color.named DimGray
         Opened = Helpers.Color.hexFromHsv h 80. 100. |> Color.hex
-        ExtendedOpened = Helpers.Color.hexFromHsv (h+10.) 45. 80. |> Color.hex
-        Background = Helpers.Color.hexFromHsv h (6. + backgroundSaturationAdjustment) 95. |> Color.hex
+        ExtendedOpened = Helpers.Color.hexFromHsv (h + 10.) 45. 80. |> Color.hex
+        Background =
+            Helpers.Color.hexFromHsv h (6. + backgroundSaturationAdjustment) 95.
+            |> Color.hex
     }
 
     let colorSet1 = mkColorSet 120. 0.

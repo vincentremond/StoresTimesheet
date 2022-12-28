@@ -35,8 +35,6 @@ module Style =
 
     let css name value = { Name = name; Value = value }
 
-    open Giraffe.ViewEngine
-
     let _font_size size = css "font-size" (FontSize.value size)
 
     let _font_style style =
@@ -57,6 +55,21 @@ module Style =
     let _opacity (f: float) = css "opacity" (string f)
     let _stroke color = css "stroke" (Color.value color)
     let _stroke_width v = css "stroke-width" (Unit.value v)
+
+    type LineCap =
+        | Butt
+        | Round
+        | Square
+
+        static member value =
+            function
+            | Butt -> "butt"
+            | Round -> "round"
+            | Square -> "square"
+
+    let _stroke_linecap cap =
+        css "stroke-linecap" (LineCap.value cap)
+
     let _stroke_opacity (f: float) = css "stroke-opacity" (string f)
 
     let _filter = css "filter"

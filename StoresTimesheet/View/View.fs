@@ -6,27 +6,12 @@ open StoresTimesheet.View
 module View =
     open Giraffe.ViewEngine.Svg
 
-    let renderStore () = [
+    let placeYPosition index =
+        let y = C.secondLineY + ((float index) * C.lineHeight)
+        (y, y + C.lineHeight)
 
-        rect [
-            _x (Unit.mm C.pageMargins.left)
-            _y (Unit.mm 20.<mm>)
-            _width (Unit.mm (C.pageWidth - C.pageMargins.left - C.pageMargins.right))
-            _height (Unit.mm C.lineHeight)
-            _style [ _fill (Color.hex "#BAD9B5") ]
-        ]
-
-        rect [
-            _x (Unit.mm (C.pageMargins.left + 110.<mm>))
-            _y (Unit.mm 20.<mm>)
-            _width (Unit.mm 50.<mm>)
-            _height (Unit.mm C.lineHeight)
-            _style [ _fill (Color.hex "#5DA551") ]
-        ]
-    ]
-
-    let weekDay weekday stores =
-        let index, dayName, color =
+    let weekDay weekday places =
+        let index, dayName, dayColor =
             match weekday with
             | Lun -> 0, @"Lundi", PaleVioletRed
             | Mar -> 1, @"Mardi", Coral
@@ -58,6 +43,7 @@ module View =
                         _style [
                             _stroke (Color.named Black)
                             _stroke_width (Unit.none 1.)
+                            _stroke_linecap Square
                         ]
                     ]
                 ]
@@ -96,7 +82,20 @@ module View =
                 _style [ _font_family [ FontFamily.generic SansSerif ] ]
             ] [ str dayName ]
 
-            g [ _id "stores" ] (stores |> List.mapi (Place.render weekday))
+            let places =
+                places
+                |> List.indexed
+                |> List.map (fun (index, place) ->
+                    let position = placeYPosition index
+                    let colorSet = if index % 2 = 0 then C.colorSet1 else C.colorSet2
+                    (place, position, colorSet))
 
-            PageLayout.render index dayName color
+            g
+                [ _id "stores" ]
+                ((places |> List.map (Place.renderMain weekday))
+                 @ (places |> List.map (Place.renderBottomLine weekday)))
+
+            let maxY = places |> List.map (fun (_, (_, y2), _) -> y2) |> List.max
+
+            PageLayout.render index (dayName, dayColor) maxY
         ]

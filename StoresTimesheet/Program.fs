@@ -25,6 +25,7 @@ module Program =
                 "💌"
                 @"La Poste"
                 @"Quai du Général de Gaulle"
+                "https://www.laposte.fr"
                 [
                     [ Lun; Mer; Jeu; Ven ],
                     [
@@ -43,6 +44,7 @@ module Program =
                 "💌"
                 @"La Poste"
                 @"Guichet Gare Amboise"
+                "https://www.laposte.fr"
                 [
                     [ Lun; Mar; Mer; Jeu; Ven ], [ ((14<hour>, 00<minute>), (17<hour>, 30<minute>)) ]
                 ]
@@ -51,6 +53,7 @@ module Program =
                 "🛒"
                 @"Au cœur des Halles"
                 @"Primeur rue Nationnale"
+                "http://www.coursdeshalles.fr/"
                 [
                     [ Mar; Mer; Jeu; Ven; Sam ],
                     [
@@ -64,6 +67,7 @@ module Program =
                 "🛒"
                 @"Leclerc"
                 @"Amboise"
+                "https://www.e.leclerc/"
                 [
                     [ Lun; Mar; Mer; Jeu; Sam ], [ ((9<hour>, 00<minute>), (19<hour>, 30<minute>)) ]
                     [ Ven ], [ ((9<hour>, 00<minute>), (20<hour>, 00<minute>)) ]
@@ -73,6 +77,7 @@ module Program =
                 "🛋️"
                 @"Ikea"
                 @"Tours"
+                "https://www.ikea.com/"
                 [
                     [ Lun; Mar; Mer; Jeu; Ven; Sam ], [ ((10<hour>, 00<minute>), (20<hour>, 00<minute>)) ]
                 ]
@@ -81,6 +86,7 @@ module Program =
                 "🛠️"
                 @"Leroy Merlin"
                 @"Chambray-lès-Tours"
+                "https://www.leroymerlin.fr/"
                 [
                     [ Lun; Mar; Mer; Jeu; Ven; Sam ], [ ((9<hour>, 00<minute>), (20<hour>, 00<minute>)) ]
                     [ Dim ],
@@ -94,6 +100,7 @@ module Program =
                 "🛠️"
                 @"Leroy Merlin"
                 @"Tours Nord"
+                "https://www.leroymerlin.fr/"
                 [
                     [ Lun; Mar; Mer; Jeu; Ven; Sam ], [ ((9<hour>, 00<minute>), (20<hour>, 00<minute>)) ]
                     [ Dim ],
@@ -106,7 +113,8 @@ module Program =
             Place.create
                 "♻️"
                 @"Déchetterie"
-                @"Amboise (été:01/04→30/09, hivers:01/10→31/03)"
+                @"Amboise (été: 01/04→30/09, hiver: 01/10→31/03)"
+                "https://www.ville-amboise.fr/"
                 [
                     [ Lun; Mar; Mer ],
                     [
@@ -139,6 +147,7 @@ module Program =
                 "🚂"
                 @"Gare Amboise"
                 @"Guichets"
+                "https://www.sncf.com/"
                 [
                     [ Lun; Mar; Mer; Jeu; Ven ],
                     [
@@ -161,6 +170,7 @@ module Program =
                 "🛒"
                 @"Biocoop"
                 @"La Boitardière"
+                "https://www.biocoop.fr/"
                 [
                     [ Lun; Mar; Mer ], [ ((9<hour>, 00<minute>), (19<hour>, 00<minute>)) ]
                     [ Jeu; Ven; Sam ], [ ((9<hour>, 30<minute>), (19<hour>, 00<minute>)) ]
@@ -170,12 +180,15 @@ module Program =
                 "🛒"
                 @"Marché"
                 @"Amboise"
+                "https://www.ville-amboise.fr/"
+
                 [ [ Ven; Dim ], [ ((8<hour>, 00<minute>), (13<hour>, 00<minute>)) ] ]
                 (Some [ [ Mar ], [ ((17<hour>, 00<minute>), (0<hour>, 00<minute>)) ] ])
             Place.create
                 "🛠️"
                 @"Baobab"
                 @"Amboise"
+                "https://jardinerie-baobab.fr"
                 [
                     [ Lun; Mar; Mer; Jeu; Ven ],
                     [
@@ -194,6 +207,7 @@ module Program =
                 "🛠️"
                 @"Bricomarché"
                 @"Pocé-sur-Cisse"
+                "https://www.bricomarche.com/"
                 [
                     [ Lun; Mar; Mer; Jeu; Ven; Sam ],
                     [
@@ -206,6 +220,7 @@ module Program =
                 "🛠️"
                 @"LaMaison.fr"
                 @"Amboise"
+                "https://www.lamaison.fr/"
                 [
                     [ Lun; Mar; Mer; Jeu; Ven; Sam ],
                     [
@@ -218,6 +233,7 @@ module Program =
                 "🛒"
                 @"Carrefour City"
                 @"quai du Général de Gaulle"
+                "https://www.carrefour.fr/"
                 [
                     [ Lun; Mar; Mer; Jeu; Ven; Sam ], [ ((7<hour>, 00<minute>), (21<hour>, 00<minute>)) ]
                     [ Dim ], [ ((9<hour>, 00<minute>), (13<hour>, 00<minute>)) ]
@@ -227,6 +243,7 @@ module Program =
                 "⚕️"
                 @"Pharmacie Centrale"
                 @"rue Nationale"
+                "https://pharmaciecentrale-amboise.pharmavie.fr/"
                 [
                     [ Lun ], [ ((14<hour>, 00<minute>), (19<hour>, 30<minute>)) ]
                     [ Mar; Mer; Jeu; Ven ],
@@ -245,12 +262,14 @@ module Program =
                 "♻️"
                 @"Emmaüs"
                 @"Amboise"
+                "https://emmaus-touraine.org/"
                 [ [ Sam ], [ ((9<hour>, 00<minute>), (16<hour>, 00<minute>)) ] ]
                 (Some [ [ Sam ], [ ((9<hour>, 00<minute>), (17<hour>, 00<minute>)) ] ])
             Place.create
                 "💪"
                 @"Fit Up"
                 @"Amboise"
+                "https://www.fitupclub.fr/"
                 [
                     [ Lun; Mar; Mer; Jeu; Ven ], [ ((9<hour>, 00<minute>), (21<hour>, 00<minute>)) ]
                     [ Sam ], [ ((9<hour>, 00<minute>), (13<hour>, 00<minute>)) ]
@@ -262,6 +281,7 @@ module Program =
                 "🛒"
                 @"Décathlon"
                 @"Tours Nord"
+                "https://www.decathlon.fr/"
                 [
                     [ Lun; Mar; Mer; Jeu; Ven; Sam ], [ ((9<hour>, 30<minute>), (19<hour>, 30<minute>)) ]
                 ]

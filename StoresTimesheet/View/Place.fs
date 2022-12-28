@@ -8,17 +8,13 @@ module Place =
 
     open Giraffe.ViewEngine.Svg
 
-    let render day (index: int) (place: Place) =
+    let renderMain day (place, (positionY1, _), colorSet) =
 
-        let y = C.secondLineY + ((float index) * C.lineHeight)
-
-        let colorSet = if index % 2 = 0 then C.colorSet1 else C.colorSet2
-
-        g [ _id $"Place_{index}" ] [
+        g [] [
 
             rect [
                 _x (Unit.mm C.pageMargins.left)
-                _y (Unit.mm y)
+                _y (Unit.mm positionY1)
                 _width (Unit.mm (C.pageWidth - C.pageMargins.left - C.pageMargins.right))
                 _height (Unit.mm C.lineHeight)
                 _style [ _fill colorSet.Background ]
@@ -27,7 +23,7 @@ module Place =
             let icon blurred =
                 image [
                     _x (Unit.mm (C.pageMargins.left + C.iconMargin))
-                    _y (Unit.mm (y + C.iconMargin))
+                    _y (Unit.mm (positionY1 + C.iconMargin))
                     _width (Unit.mm (C.lineHeight - (C.iconMargin * 2.0)))
                     _height (Unit.mm (C.lineHeight - (C.iconMargin * 2.0)))
                     _preserve_aspect_ratio "none"
@@ -39,9 +35,18 @@ module Place =
             icon true
             icon false
 
-            text [
+            image [
                 _x (Unit.mm (C.pageMargins.left + C.lineHeight))
-                _y (Unit.mm (y - C.textSpacing + C.lineHeight))
+                _y (Unit.mm (positionY1 + C.iconMargin))
+                _width (Unit.mm (C.lineHeight - (C.iconMargin * 2.0)))
+                _height (Unit.mm (C.lineHeight - (C.iconMargin * 2.0)))
+                _preserve_aspect_ratio "none"
+                _xlink__href (Image.toBase64 place.Favicon)
+            ]
+
+            text [
+                _x (Unit.mm (C.pageMargins.left + C.lineHeight + C.lineHeight))
+                _y (Unit.mm (positionY1 - C.textSpacing + C.lineHeight))
                 _style [ _font_family [ FontFamily.generic SansSerif ] ]
             ] [
                 tspan [
@@ -76,17 +81,22 @@ module Place =
 
                     rect [
                         _x (Unit.mm fromX)
-                        _y (Unit.mm y)
+                        _y (Unit.mm positionY1)
                         _width (Unit.mm width)
                         _height (Unit.mm C.lineHeight)
                         _style [ _fill color ]
                     ]
+        ]
 
-            line [
-                _x1 (Unit.mm C.pageMargins.left)
-                _y1 (Unit.mm (y + C.lineHeight))
-                _x2 (Unit.mm (C.pageWidth - C.pageMargins.right))
-                _y2 (Unit.mm (y + C.lineHeight))
-                _style [ _stroke (Color.named Black) ]
+    let renderBottomLine _ (_, (_, positionY2), _) =
+        line [
+            _x1 (Unit.mm C.pageMargins.left)
+            _y1 (Unit.mm positionY2)
+            _x2 (Unit.mm (C.pageWidth - C.pageMargins.right))
+            _y2 (Unit.mm positionY2)
+            _style [
+                _stroke (Color.named Black)
+                _stroke_width C.lineWidth.Standard
+                _stroke_linecap Square
             ]
         ]
