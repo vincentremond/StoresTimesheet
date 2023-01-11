@@ -20,7 +20,7 @@
     <Compile Include="Helpers\Image.fs" />
     <Compile Include="Types.fs" />
     <Compile Include="View\Constants.fs" />
-    <Compile Include="View\Place.fs" />
+    <Compile Include="View\PlaceView.fs" />
     <Compile Include="View\PageLayout.fs" />
     <Compile Include="View\View.fs" />
     <Content Include="View\.editorconfig" />

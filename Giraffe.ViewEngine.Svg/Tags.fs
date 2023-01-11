@@ -18,3 +18,11 @@ module Tags =
     let filter = tag "filter"
     let fe_gaussian_blur = tag "feGaussianBlur"
     let fe_color_matrix = tag "feColorMatrix"
+
+    [<RequireQualifiedAccess>]
+    module Sodipodi =
+        let namedView = tag "sodipodi:namedview"
+
+    [<RequireQualifiedAccess>]
+    module Inkscape =
+        let page = voidTag "inkscape:page"

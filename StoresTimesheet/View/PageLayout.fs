@@ -1,20 +1,26 @@
 ﻿namespace StoresTimesheet.View
 
+open StoresTimesheet
+
 [<RequireQualifiedAccess>]
 module PageLayout =
 
     open Giraffe.ViewEngine.Svg
-    open StoresTimesheet
     open StoresTimesheet.Helpers
 
-    let renderPageLines yBottom = [
+    let renderPageLines pageVerticalOffset dayModel = [
+
+        let maxY =
+            dayModel.Places
+            |> List.map (PlaceView.calculatePlaceVerticalPosition >> snd)
+            |> List.max
 
         // margin top
         line [
             _x1 (Unit.mm C.pageMargins.left)
-            _y1 (Unit.mm C.pageMargins.top)
+            _y1 (Unit.mm (pageVerticalOffset + C.pageMargins.top))
             _x2 (Unit.mm (C.pageWidth - C.pageMargins.right))
-            _y2 (Unit.mm C.pageMargins.top)
+            _y2 (Unit.mm (pageVerticalOffset + C.pageMargins.top))
             _style [
                 _stroke (Color.named Black)
                 _stroke_linecap Square
@@ -24,9 +30,9 @@ module PageLayout =
         // margin bottom
         line [
             _x1 (Unit.mm C.pageMargins.left)
-            _y1 (Unit.mm yBottom)
+            _y1 (Unit.mm (pageVerticalOffset + maxY))
             _x2 (Unit.mm (C.pageWidth - C.pageMargins.right))
-            _y2 (Unit.mm yBottom)
+            _y2 (Unit.mm (pageVerticalOffset + maxY))
             _style [
                 _stroke (Color.named Black)
                 _stroke_linecap Square
@@ -36,9 +42,9 @@ module PageLayout =
         // margin left
         line [
             _x1 (Unit.mm C.pageMargins.left)
-            _y1 (Unit.mm C.pageMargins.top)
+            _y1 (Unit.mm (pageVerticalOffset + C.pageMargins.top))
             _x2 (Unit.mm C.pageMargins.left)
-            _y2 (Unit.mm yBottom)
+            _y2 (Unit.mm (pageVerticalOffset + maxY))
             _style [
                 _stroke (Color.named Black)
                 _stroke_linecap Square
@@ -48,9 +54,9 @@ module PageLayout =
         // margin right
         line [
             _x1 (Unit.mm (C.pageWidth - C.pageMargins.right))
-            _y1 (Unit.mm C.pageMargins.top)
+            _y1 (Unit.mm (pageVerticalOffset + C.pageMargins.top))
             _x2 (Unit.mm (C.pageWidth - C.pageMargins.right))
-            _y2 (Unit.mm yBottom)
+            _y2 (Unit.mm (pageVerticalOffset + maxY))
             _style [
                 _stroke (Color.named Black)
                 _stroke_linecap Square
@@ -60,9 +66,9 @@ module PageLayout =
         // second horizontal line for the header
         line [
             _x1 (Unit.mm C.pageMargins.left)
-            _y1 (Unit.mm C.secondLineY)
+            _y1 (Unit.mm (pageVerticalOffset + C.secondLineY))
             _x2 (Unit.mm (C.pageWidth - C.pageMargins.right))
-            _y2 (Unit.mm C.secondLineY)
+            _y2 (Unit.mm (pageVerticalOffset + C.secondLineY))
             _style [
                 _stroke (Color.named Black)
                 _stroke_linecap Square
@@ -74,9 +80,9 @@ module PageLayout =
 
             line [
                 _x1 (Unit.mm x)
-                _y1 (Unit.mm C.secondLineY)
+                _y1 (Unit.mm (pageVerticalOffset + C.secondLineY))
                 _x2 (Unit.mm x)
-                _y2 (Unit.mm yBottom)
+                _y2 (Unit.mm (pageVerticalOffset + maxY))
                 _style [
                     _stroke (Color.named Black)
                     _stroke_width C.lineWidth.Standard
@@ -89,9 +95,9 @@ module PageLayout =
 
                 line [
                     _x1 (Unit.mm x)
-                    _y1 (Unit.mm C.secondLineY)
+                    _y1 (Unit.mm (pageVerticalOffset + C.secondLineY))
                     _x2 (Unit.mm x)
-                    _y2 (Unit.mm yBottom)
+                    _y2 (Unit.mm (pageVerticalOffset + maxY))
                     _style [
                         _stroke (Color.rgb 20 20 20)
                         _stroke_width C.lineWidth.Small
@@ -101,7 +107,7 @@ module PageLayout =
 
             text [
                 _x (Unit.mm x)
-                _y (Unit.mm (C.secondLineY - C.textSpacing))
+                _y (Unit.mm (pageVerticalOffset + C.secondLineY - C.textSpacing))
                 _text_anchor TextAnchor.Middle
                 _style [
                     _text_align TextAlign.Center
@@ -111,11 +117,11 @@ module PageLayout =
 
     ]
 
-    let renderRightDayName index (name, color) =
+    let renderRightDayName pageVerticalOffset (dayModel: WeekDayViewModel) =
         let verticalSize = C.pageHeight / C.daysPerWeek
         let width = 10.<mm>
         let x = C.pageWidth - width
-        let dayBackgroundY = index * verticalSize
+        let dayBackgroundY = (float dayModel.Index) * verticalSize
         let toCutY = dayBackgroundY + verticalSize
         let toCutHeight = C.pageHeight - toCutY
 
@@ -123,10 +129,10 @@ module PageLayout =
             // day back
             rect [
                 _x (Unit.mm x)
-                _y (Unit.mm dayBackgroundY)
+                _y (Unit.mm (pageVerticalOffset + dayBackgroundY))
                 _width (Unit.mm width)
                 _height (Unit.mm verticalSize)
-                _style [ _fill (Color.named color) ]
+                _style [ _fill dayModel.DayColor ]
             ]
 
             // to cut
@@ -134,14 +140,14 @@ module PageLayout =
 
             rect [
                 _x (Unit.mm (x + cutMargin))
-                _y (Unit.mm (toCutY + cutMargin))
+                _y (Unit.mm (pageVerticalOffset + toCutY + cutMargin))
                 _width (Unit.mm (width - cutMargin))
                 _height (Unit.mm (toCutHeight - cutMargin))
                 _style [ _fill (Color.url "#diagonalHatch") ]
             ]
 
             text [
-                _x (Unit.mm (dayBackgroundY + (verticalSize / 2.0)))
+                _x (Unit.mm (pageVerticalOffset + dayBackgroundY + (verticalSize / 2.0)))
                 _y (Unit.mm (-1. * (x + (width / 2.0))))
                 _text_anchor TextAnchor.Middle
                 _dominant_baseline DominantBaseline.Central
@@ -153,8 +159,10 @@ module PageLayout =
                     _fill (Color.named Black)
                     _letter_spacing (Unit.px 3.<px>)
                 ]
-            ] [ str (name |> String.toUpperInvariant) ]
+            ] [ str (dayModel.Name |> String.toUpperInvariant) ]
         ]
 
-    let render index day maxY =
-        g [] (renderPageLines maxY @ (renderRightDayName index day))
+    let render pageVerticalOffset (weekDayViewModel: WeekDayViewModel) = [
+        g [] (renderPageLines pageVerticalOffset weekDayViewModel)
+        g [] (renderRightDayName pageVerticalOffset weekDayViewModel)
+    ]

@@ -6,20 +6,7 @@ open StoresTimesheet.View
 module View =
     open Giraffe.ViewEngine.Svg
 
-    let placeYPosition index =
-        let y = C.secondLineY + ((float index) * C.lineHeight)
-        (y, y + C.lineHeight)
-
-    let weekDay weekday places =
-        let index, dayName, dayColor =
-            match weekday with
-            | Lun -> 0, @"Lundi", PaleVioletRed
-            | Mar -> 1, @"Mardi", Coral
-            | Mer -> 2, @"Mercredi", Gold
-            | Jeu -> 3, @"Jeudi", LightYellow
-            | Ven -> 4, @"Vendredi", PaleGreen
-            | Sam -> 5, @"Samedi", LightSkyBlue
-            | Dim -> 6, @"Dimanche", Plum
+    let render model =
 
         svg [
             _width (Unit.mm C.pageWidth)
@@ -27,6 +14,17 @@ module View =
             _xmlns "http://www.w3.org/2000/svg"
             _xmlns__xlink "http://www.w3.org/1999/xlink"
         ] [
+            (Sodipodi.namedView [] [
+                for dayModel in model.WeekDays do
+                    Inkscape.page [
+                        _x (Unit.none 0.0)
+                        _y (Unit.mm (float dayModel.Index * (C.pageHeight + 10.0<mm>)))
+                        _width (Unit.mm C.pageWidth)
+                        _height (Unit.mm C.pageHeight)
+                        _id $"Page-{dayModel.Name}"
+                    ]
+            ])
+
             defs [] [
                 pattern [
                     _id "diagonalHatch"
@@ -67,35 +65,18 @@ module View =
                 ]
             ]
 
-            // global background
-            rect [
-                _x (Unit.none 0.)
-                _y (Unit.none 0.)
-                _width (Unit.mm C.pageWidth)
-                _height (Unit.mm C.pageHeight)
-                _style [ _fill (Color.named White) ]
-            ]
+            for dayModel in model.WeekDays do
 
-            text [
-                _x (Unit.mm (C.pageMargins.left + C.textSpacing))
-                _y (Unit.mm (C.secondLineY - C.textSpacing))
-                _style [ _font_family [ FontFamily.generic SansSerif ] ]
-            ] [ str dayName ]
+                let pageVerticalOffset = float dayModel.Index * (C.pageHeight + 10.0<mm>)
 
-            let places =
-                places
-                |> List.indexed
-                |> List.map (fun (index, place) ->
-                    let position = placeYPosition index
-                    let colorSet = if index % 2 = 0 then C.colorSet1 else C.colorSet2
-                    (place, position, colorSet))
+                // Day name
+                text [
+                    _x (Unit.mm (C.pageMargins.left + C.textSpacing))
+                    _y (Unit.mm (pageVerticalOffset + C.secondLineY - C.textSpacing))
+                    _style [ _font_family [ FontFamily.generic SansSerif ] ]
+                ] [ str dayModel.Name ]
 
-            g
-                [ _id "stores" ]
-                ((places |> List.map (Place.renderMain weekday))
-                 @ (places |> List.map (Place.renderBottomLine weekday)))
-
-            let maxY = places |> List.map (fun (_, (_, y2), _) -> y2) |> List.max
-
-            PageLayout.render index (dayName, dayColor) maxY
+                g [] (dayModel.Places |> List.map (PlaceView.renderMain pageVerticalOffset))
+                g [] (dayModel.Places |> List.map (PlaceView.renderBottomLines pageVerticalOffset))
+                g [] (PageLayout.render pageVerticalOffset dayModel)
         ]

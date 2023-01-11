@@ -3,14 +3,6 @@
 open Giraffe.ViewEngine.Svg
 open StoresTimesheet
 
-type ColorSet = {
-    PrimaryText: Color
-    SecondaryText: Color
-    Opened: Color
-    ExtendedOpened: Color
-    Background: Color
-}
-
 [<RequireQualifiedAccess>]
 module C =
 
@@ -34,7 +26,7 @@ module C =
 
     let lineHeight = 6.<mm>
     let defaultFontSize = 10<pt>
-    let leftSpaceForLabels = 72.<mm>
+    let leftSpaceForLabels = 77.<mm>
 
     let secondLineY = pageMargins.top + 7.<mm>
     let textSpacing = 1.6<mm>
@@ -52,14 +44,15 @@ module C =
         PrimaryText = Color.named Black
         SecondaryText = Color.named DimGray
         Opened = Helpers.Color.hexFromHsv h 80. 100. |> Color.hex
-        ExtendedOpened = Helpers.Color.hexFromHsv (h + 10.) 45. 80. |> Color.hex
+        ExtendedOpened = Helpers.Color.hexFromHsv (h + 20.) 35. 80. |> Color.hex
         Background =
             Helpers.Color.hexFromHsv h (6. + backgroundSaturationAdjustment) 95.
             |> Color.hex
     }
 
-    let colorSet1 = mkColorSet 120. 0.
-
-    let colorSet2 = mkColorSet 220. 3.
+    let colorSets = [
+        mkColorSet 120. 0.
+        mkColorSet 220. 3.
+    ]
 
     let iconMargin = 1.<mm>

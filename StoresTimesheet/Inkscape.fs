@@ -17,3 +17,6 @@ module Inkscape =
 
     let convertToPng (inputFile: string) (outputFile: string) =
         runInkscape $"--export-type png -d 600 --export-filename \"{outputFile}\" \"{inputFile}\""
+
+    let exportToPdf (inputFile: string) (outputFile: string) =
+        runInkscape $"--export-type pdf --export-filename \"{outputFile}\" \"{inputFile}\""

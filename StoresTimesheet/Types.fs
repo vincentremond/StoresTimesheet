@@ -1,6 +1,7 @@
 ﻿namespace StoresTimesheet
 
 open System
+open Giraffe.ViewEngine.Svg
 open StoresTimesheet.Helpers
 
 type WeekDay =
@@ -12,7 +13,14 @@ type WeekDay =
     | Sam
     | Dim
 
-type OpeningHours = Map<WeekDay, (TimeOnly * TimeOnly) list>
+type OpenPeriod = OpenPeriod of From: TimeOnly * To: TimeOnly
+
+type OpeningHours =
+    | OpeningHours of Map<WeekDay, OpenPeriod list>
+
+    member this.GetForDay(day) =
+        match this with
+        | OpeningHours map -> map |> Map.tryFind day |> Option.defaultValue []
 
 type Place =
     {
@@ -32,8 +40,9 @@ type Place =
             |> List.map (fun day ->
                 day,
                 times
-                |> List.map (fun ((h1, m1), (h2, m2)) -> TimeOnly(int h1, int m1), TimeOnly(int h2, int m2))))
+                |> List.map (fun ((h1, m1), (h2, m2)) -> OpenPeriod(TimeOnly(int h1, int m1), TimeOnly(int h2, int m2)))))
         |> Map.ofList
+        |> OpeningHours
 
     static member create icon name description domain openingHours extendedOpeningHours =
         let favicon =
@@ -48,3 +57,34 @@ type Place =
             OpeningHours = openingHours |> Place.mapOpeningHours
             ExtendedOpeningHours = extendedOpeningHours |> (Option.defaultValue []) |> Place.mapOpeningHours
         }
+
+type ColorSet = {
+    PrimaryText: Color
+    SecondaryText: Color
+    Opened: Color
+    ExtendedOpened: Color
+    Background: Color
+}
+
+type ViewModel = { WeekDays: WeekDayViewModel list }
+
+and WeekDayViewModel = {
+    Index: int
+    Name: string
+    DayColor: Color
+    Places: PlaceViewModel list
+}
+
+and PlaceViewModel = {
+    Index: int
+    Icon: string
+    Name: string
+    Description: string
+    Domain: string
+    Favicon: string * byte array
+    Colors: ColorSet
+    OpeningHours: OpeningHoursModel list
+    ExtendedOpeningHours: OpeningHoursModel list
+}
+
+and OpeningHoursModel = OpenPeriod

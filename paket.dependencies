@@ -4,7 +4,6 @@ storage: none
 framework: auto-detect
 
 nuget ColorMinePortable
-nuget FreeSpire.PDF
 nuget Giraffe.ViewEngine
 
 group Tests
