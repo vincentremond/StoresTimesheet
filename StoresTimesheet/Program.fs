@@ -320,6 +320,19 @@ module Program =
                 ]
             ]
             None
+        Place.create
+            "🎲"
+            @"L'interlude"
+            @"Amboise"
+            "https://www.facebook.com/linterlude37/"
+            [
+                [ Mar; Mer; Ven; Sam ], [ ((10<hour>, 00<minute>), (19<hour>, 00<minute>)) ]
+                [ Jeu ], [
+                    ((10<hour>, 00<minute>), (13<hour>, 00<minute>))
+                    ((14<hour>, 00<minute>), (19<hour>, 00<minute>))
+                ]
+            ]
+            None
     ]
 
     [<EntryPoint>]
