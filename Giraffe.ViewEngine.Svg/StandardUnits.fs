@@ -1,4 +1,4 @@
-﻿namespace Giraffe.ViewEngine.Svg
+﻿namespace Giraffe.ViewEngine.Svg.StandardUnits
 
 [<Measure>]
 type cm

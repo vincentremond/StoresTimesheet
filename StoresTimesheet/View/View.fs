@@ -1,5 +1,6 @@
 ﻿namespace StoresTimesheet.View
 
+open Giraffe.ViewEngine.Svg.StandardUnits
 open StoresTimesheet
 open StoresTimesheet.View
 

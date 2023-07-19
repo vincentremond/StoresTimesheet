@@ -1,5 +1,7 @@
 ﻿namespace Giraffe.ViewEngine.Svg
 
+open Giraffe.ViewEngine.Svg.StandardUnits
+
 type Unit =
     | Centimeters of float<cm>
     | Pixels of float<px>

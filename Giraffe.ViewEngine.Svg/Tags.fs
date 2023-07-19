@@ -18,6 +18,9 @@ module Tags =
     let filter = tag "filter"
     let fe_gaussian_blur = tag "feGaussianBlur"
     let fe_color_matrix = tag "feColorMatrix"
+    let path = voidTag "path"
+    let marker = tag "marker"
+    let circle = voidTag "circle"
 
     [<RequireQualifiedAccess>]
     module Sodipodi =

@@ -1,5 +1,7 @@
 ﻿namespace Giraffe.ViewEngine.Svg
 
+open Giraffe.ViewEngine.Svg.StandardUnits
+
 [<RequireQualifiedAccess>]
 type Transform =
     | Rotate of float<deg>

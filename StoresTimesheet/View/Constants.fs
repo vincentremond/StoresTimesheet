@@ -1,6 +1,7 @@
 ﻿namespace StoresTimesheet.View
 
 open Giraffe.ViewEngine.Svg
+open Giraffe.ViewEngine.Svg.StandardUnits
 open StoresTimesheet
 
 [<RequireQualifiedAccess>]

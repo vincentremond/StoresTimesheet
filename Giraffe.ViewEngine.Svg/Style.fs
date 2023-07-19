@@ -32,6 +32,9 @@ module Style =
             | End -> "end"
 
     type CssProperty = { Name: string; Value: string }
+    with
+        static member value x = $"%s{x.Name}:%s{x.Value}"
+        static member values x = x |> List.map CssProperty.value |> String.concat ";"
 
     let css name value = { Name = name; Value = value }
 
@@ -70,6 +73,20 @@ module Style =
     let _stroke_linecap cap =
         css "stroke-linecap" (LineCap.value cap)
 
+    type LineJoin =
+        | Miter
+        | Round
+        | Bevel
+
+        static member value =
+            function
+            | Miter -> "miter"
+            | Round -> "round"
+            | Bevel -> "bevel"
+
+    let _stroke_linejoin join =
+        css "stroke-linejoin" (LineJoin.value join)
+
     let _stroke_opacity (f: float) = css "stroke-opacity" (string f)
 
     let _filter = css "filter"
@@ -85,3 +102,19 @@ module Style =
 
     let _color_interpolation_filters v =
         css "color-interpolation-filters" (ColorInterpolationFilters.value v)
+
+    type Marker =
+        | Named of string
+
+        static member named = Named
+
+        static member value m =
+            match m with
+            | Named s -> $"url(#{s})"
+
+    let _marker_start marker =
+        css "marker-start" (Marker.value marker)
+
+    let _marker_mid marker = css "marker-mid" (Marker.value marker)
+
+    let _marker_end marker = css "marker-end" (Marker.value marker)

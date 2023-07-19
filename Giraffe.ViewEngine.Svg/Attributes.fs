@@ -78,16 +78,24 @@ module Attributes =
     let _pattern_units v =
         attr "patternUnits" (PattenUnits.value v)
 
-    let _style (values: CssProperty list) =
-        attr "style" (values |> List.map (fun x -> $"%s{x.Name}:%s{x.Value}") |> String.concat ";")
-
     let _std_deviation = floatAttr "stdDeviation"
     let _type = attr "type"
     let _values = attr "values"
     let _width = sizeAttr "width"
     let _height = sizeAttr "height"
+    let _view_box minX minY width height =
+        attr "viewBox" $"%f{minX} %f{minY} %f{width} %f{height}"
     let _preserve_aspect_ratio = attr "preserveAspectRatio"
     let _id = attr "id"
+    let _cx = sizeAttr "cx"
+    let _cy = sizeAttr "cy"
+    let _r = sizeAttr "r"
+    
+    
+    let _style cssProperties = 
+        attr "style" (CssProperty.values cssProperties)
+
+    let _d commands = attr "d" (PathCommand.values commands)
 
     [<RequireQualifiedAccess>]
     type DominantBaseline =
