@@ -1,3 +1,6 @@
 [submodule "Pinicola.FSharp"]
 	path = Pinicola.FSharp
 	url = https://github.com/vincentremond/Pinicola.FSharp
+[submodule "Giraffe.ViewEngine.Svg"]
+	path = Giraffe.ViewEngine.Svg
+	url = https://github.com/vincentremond/Giraffe.ViewEngine.Svg.git

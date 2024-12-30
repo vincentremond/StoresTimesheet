@@ -16,13 +16,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{987471
 		paket.lock = paket.lock
 	EndProjectSection
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Giraffe.ViewEngine.Svg", "Giraffe.ViewEngine.Svg\Giraffe.ViewEngine.Svg.fsproj", "{62FDED2C-7204-41D9-96F9-6E904ACB6E95}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pinicola.FSharp", "Pinicola.FSharp", "{5536A715-8270-4A7B-AAF0-38F5B87F9E5B}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Pinicola.FSharp", "Pinicola.FSharp\Pinicola.FSharp\Pinicola.FSharp.fsproj", "{A7F4D496-21E2-449A-B905-608EB1B9926E}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Pinicola.FSharp.SpectreConsole", "Pinicola.FSharp\Pinicola.FSharp.SpectreConsole\Pinicola.FSharp.SpectreConsole.fsproj", "{0FF8B362-D4A7-42D8-B78B-7428F6819DBD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Giraffe.ViewEngine.Svg", "Giraffe.ViewEngine.Svg", "{709C5E02-B4FC-446B-8852-49E1D68261A6}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Giraffe.ViewEngine.Svg", "Giraffe.ViewEngine.Svg\Giraffe.ViewEngine.Svg\Giraffe.ViewEngine.Svg.fsproj", "{CF42C1C4-B398-4F3C-9F91-81C7C467643A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +43,6 @@ Global
 		{939E67C3-0CD7-46A5-8208-EF6EA3E3EA91}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{939E67C3-0CD7-46A5-8208-EF6EA3E3EA91}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{939E67C3-0CD7-46A5-8208-EF6EA3E3EA91}.Release|Any CPU.Build.0 = Release|Any CPU
-		{62FDED2C-7204-41D9-96F9-6E904ACB6E95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{62FDED2C-7204-41D9-96F9-6E904ACB6E95}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{62FDED2C-7204-41D9-96F9-6E904ACB6E95}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{62FDED2C-7204-41D9-96F9-6E904ACB6E95}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A7F4D496-21E2-449A-B905-608EB1B9926E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A7F4D496-21E2-449A-B905-608EB1B9926E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7F4D496-21E2-449A-B905-608EB1B9926E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -53,9 +51,14 @@ Global
 		{0FF8B362-D4A7-42D8-B78B-7428F6819DBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FF8B362-D4A7-42D8-B78B-7428F6819DBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FF8B362-D4A7-42D8-B78B-7428F6819DBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF42C1C4-B398-4F3C-9F91-81C7C467643A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF42C1C4-B398-4F3C-9F91-81C7C467643A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF42C1C4-B398-4F3C-9F91-81C7C467643A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF42C1C4-B398-4F3C-9F91-81C7C467643A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{A7F4D496-21E2-449A-B905-608EB1B9926E} = {5536A715-8270-4A7B-AAF0-38F5B87F9E5B}
 		{0FF8B362-D4A7-42D8-B78B-7428F6819DBD} = {5536A715-8270-4A7B-AAF0-38F5B87F9E5B}
+		{CF42C1C4-B398-4F3C-9F91-81C7C467643A} = {709C5E02-B4FC-446B-8852-49E1D68261A6}
 	EndGlobalSection
 EndGlobal
