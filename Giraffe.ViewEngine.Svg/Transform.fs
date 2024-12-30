@@ -15,5 +15,5 @@ type Transform =
     static member value =
         function
         | Rotate f -> $"rotate(%f{f})"
-        | RotateAround (f, x, y) -> $"rotate(%f{f} %s{Unit.value x}  %s{Unit.value y})"
-        | Translate (x, y) -> $"translate(%s{Unit.value x} %s{Unit.value y})"
+        | RotateAround(f, x, y) -> $"rotate(%f{f} %s{Unit.value x}  %s{Unit.value y})"
+        | Translate(x, y) -> $"translate(%s{Unit.value x} %s{Unit.value y})"

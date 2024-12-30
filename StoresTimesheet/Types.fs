@@ -13,7 +13,7 @@ type WeekDay =
     | Sam
     | Dim
 
-type OpenPeriod = OpenPeriod of From: TimeOnly * To: TimeOnly
+type OpenPeriod = | OpenPeriod of From: TimeOnly * To: TimeOnly
 
 type OpeningHours =
     | OpeningHours of Map<WeekDay, OpenPeriod list>
@@ -22,16 +22,15 @@ type OpeningHours =
         match this with
         | OpeningHours map -> map |> Map.tryFind day |> Option.defaultValue []
 
-type Place =
-    {
-        Icon: string
-        Name: string
-        Description: string
-        Domain: string
-        Favicon: string * byte array
-        OpeningHours: OpeningHours
-        ExtendedOpeningHours: OpeningHours
-    }
+type Place = {
+    Icon: string
+    Name: string
+    Description: string
+    Domain: string
+    Favicon: string * byte array
+    OpeningHours: OpeningHours
+    ExtendedOpeningHours: OpeningHours
+} with
 
     static member mapOpeningHours(openingHours: (WeekDay list * ((Hour * Minute) * (Hour * Minute)) list) list) =
         openingHours
@@ -40,7 +39,11 @@ type Place =
             |> List.map (fun day ->
                 day,
                 times
-                |> List.map (fun ((h1, m1), (h2, m2)) -> OpenPeriod(TimeOnly(int h1, int m1), TimeOnly(int h2, int m2)))))
+                |> List.map (fun ((h1, m1), (h2, m2)) ->
+                    OpenPeriod(TimeOnly(int h1, int m1), TimeOnly(int h2, int m2))
+                )
+            )
+        )
         |> Map.ofList
         |> OpeningHours
 

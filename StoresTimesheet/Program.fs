@@ -24,7 +24,12 @@ module Program =
             @"Quai du Général de Gaulle"
             "https://www.laposte.fr"
             [
-                [ Lun; Mer; Jeu; Ven ],
+                [
+                    Lun
+                    Mer
+                    Jeu
+                    Ven
+                ],
                 [
                     ((9<hour>, 00<minute>), (12<hour>, 30<minute>))
                     ((14<hour>, 00<minute>), (18<hour>, 00<minute>))
@@ -43,7 +48,14 @@ module Program =
             @"Guichet Gare Amboise"
             "https://www.laposte.fr"
             [
-                [ Lun; Mar; Mer; Jeu; Ven ], [ ((14<hour>, 00<minute>), (17<hour>, 30<minute>)) ]
+                [
+                    Lun
+                    Mar
+                    Mer
+                    Jeu
+                    Ven
+                ],
+                [ ((14<hour>, 00<minute>), (17<hour>, 30<minute>)) ]
             ]
             None
         Place.create
@@ -52,7 +64,13 @@ module Program =
             @"Primeur rue Nationnale"
             "http://www.coursdeshalles.fr/"
             [
-                [ Mar; Mer; Jeu; Ven; Sam ],
+                [
+                    Mar
+                    Mer
+                    Jeu
+                    Ven
+                    Sam
+                ],
                 [
                     ((8<hour>, 00<minute>), (12<hour>, 30<minute>))
                     ((15<hour>, 00<minute>), (19<hour>, 30<minute>))
@@ -66,7 +84,14 @@ module Program =
             @"Amboise"
             "https://www.e.leclerc/"
             [
-                [ Lun; Mar; Mer; Jeu; Sam ], [ ((9<hour>, 00<minute>), (19<hour>, 30<minute>)) ]
+                [
+                    Lun
+                    Mar
+                    Mer
+                    Jeu
+                    Sam
+                ],
+                [ ((9<hour>, 00<minute>), (19<hour>, 30<minute>)) ]
                 [ Ven ], [ ((9<hour>, 00<minute>), (20<hour>, 00<minute>)) ]
             ]
             None
@@ -76,7 +101,15 @@ module Program =
             @"Tours"
             "https://www.ikea.com/"
             [
-                [ Lun; Mar; Mer; Jeu; Ven; Sam ], [ ((10<hour>, 00<minute>), (20<hour>, 00<minute>)) ]
+                [
+                    Lun
+                    Mar
+                    Mer
+                    Jeu
+                    Ven
+                    Sam
+                ],
+                [ ((10<hour>, 00<minute>), (20<hour>, 00<minute>)) ]
             ]
             None
         Place.create
@@ -85,7 +118,15 @@ module Program =
             @"Chambray-lès-Tours"
             "https://www.leroymerlin.fr/"
             [
-                [ Lun; Mar; Mer; Jeu; Ven; Sam ], [ ((9<hour>, 00<minute>), (20<hour>, 00<minute>)) ]
+                [
+                    Lun
+                    Mar
+                    Mer
+                    Jeu
+                    Ven
+                    Sam
+                ],
+                [ ((9<hour>, 00<minute>), (20<hour>, 00<minute>)) ]
                 [ Dim ],
                 [
                     ((9<hour>, 00<minute>), (13<hour>, 00<minute>))
@@ -99,7 +140,15 @@ module Program =
             @"Tours Nord"
             "https://www.leroymerlin.fr/"
             [
-                [ Lun; Mar; Mer; Jeu; Ven; Sam ], [ ((9<hour>, 00<minute>), (20<hour>, 00<minute>)) ]
+                [
+                    Lun
+                    Mar
+                    Mer
+                    Jeu
+                    Ven
+                    Sam
+                ],
+                [ ((9<hour>, 00<minute>), (20<hour>, 00<minute>)) ]
                 [ Dim ],
                 [
                     ((9<hour>, 00<minute>), (13<hour>, 00<minute>))
@@ -113,7 +162,11 @@ module Program =
             @"Amboise (été: 01/04→30/09, hiver: 01/10→31/03)"
             "https://www.ville-amboise.fr/"
             [
-                [ Lun; Mar; Mer ],
+                [
+                    Lun
+                    Mar
+                    Mer
+                ],
                 [
                     ((9<hour>, 00<minute>), (12<hour>, 30<minute>))
                     ((14<hour>, 30<minute>), (17<hour>, 00<minute>))
@@ -127,7 +180,11 @@ module Program =
                 [ Sam ], [ ((9<hour>, 00<minute>), (17<hour>, 00<minute>)) ]
             ]
             (Some [
-                [ Lun; Mar; Mer ],
+                [
+                    Lun
+                    Mar
+                    Mer
+                ],
                 [
                     ((8<hour>, 30<minute>), (12<hour>, 30<minute>))
                     ((14<hour>, 30<minute>), (18<hour>, 00<minute>))
@@ -146,7 +203,13 @@ module Program =
             @"Guichets"
             "https://www.sncf.com/"
             [
-                [ Lun; Mar; Mer; Jeu; Ven ],
+                [
+                    Lun
+                    Mar
+                    Mer
+                    Jeu
+                    Ven
+                ],
                 [
                     ((6<hour>, 15<minute>), (13<hour>, 20<minute>))
                     ((13<hour>, 50<minute>), (21<hour>, 00<minute>))
@@ -169,8 +232,18 @@ module Program =
             @"La Boitardière"
             "https://www.biocoop.fr/"
             [
-                [ Lun; Mar; Mer ], [ ((9<hour>, 00<minute>), (19<hour>, 00<minute>)) ]
-                [ Jeu; Ven; Sam ], [ ((9<hour>, 30<minute>), (19<hour>, 00<minute>)) ]
+                [
+                    Lun
+                    Mar
+                    Mer
+                ],
+                [ ((9<hour>, 00<minute>), (19<hour>, 00<minute>)) ]
+                [
+                    Jeu
+                    Ven
+                    Sam
+                ],
+                [ ((9<hour>, 30<minute>), (19<hour>, 00<minute>)) ]
             ]
             None
         Place.create
@@ -179,7 +252,13 @@ module Program =
             @"Amboise"
             "https://www.ville-amboise.fr/"
 
-            [ [ Ven; Dim ], [ ((8<hour>, 00<minute>), (13<hour>, 00<minute>)) ] ]
+            [
+                [
+                    Ven
+                    Dim
+                ],
+                [ ((8<hour>, 00<minute>), (13<hour>, 00<minute>)) ]
+            ]
             (Some [ [ Mar ], [ ((17<hour>, 00<minute>), (0<hour>, 00<minute>)) ] ])
         Place.create
             "🛠️"
@@ -187,7 +266,13 @@ module Program =
             @"Amboise"
             "https://jardinerie-baobab.fr"
             [
-                [ Lun; Mar; Mer; Jeu; Ven ],
+                [
+                    Lun
+                    Mar
+                    Mer
+                    Jeu
+                    Ven
+                ],
                 [
                     ((9<hour>, 30<minute>), (12<hour>, 30<minute>))
                     ((14<hour>, 15<minute>), (18<hour>, 30<minute>))
@@ -206,7 +291,14 @@ module Program =
             @"Pocé-sur-Cisse"
             "https://www.bricomarche.com/"
             [
-                [ Lun; Mar; Mer; Jeu; Ven; Sam ],
+                [
+                    Lun
+                    Mar
+                    Mer
+                    Jeu
+                    Ven
+                    Sam
+                ],
                 [
                     ((8<hour>, 15<minute>), (12<hour>, 30<minute>))
                     ((14<hour>, 00<minute>), (19<hour>, 00<minute>))
@@ -219,7 +311,14 @@ module Program =
             @"Amboise"
             "https://www.lamaison.fr/"
             [
-                [ Lun; Mar; Mer; Jeu; Ven; Sam ],
+                [
+                    Lun
+                    Mar
+                    Mer
+                    Jeu
+                    Ven
+                    Sam
+                ],
                 [
                     ((9<hour>, 00<minute>), (12<hour>, 00<minute>))
                     ((14<hour>, 00<minute>), (18<hour>, 30<minute>))
@@ -232,7 +331,15 @@ module Program =
             @"quai du Général de Gaulle"
             "https://www.carrefour.fr/"
             [
-                [ Lun; Mar; Mer; Jeu; Ven; Sam ], [ ((7<hour>, 00<minute>), (21<hour>, 00<minute>)) ]
+                [
+                    Lun
+                    Mar
+                    Mer
+                    Jeu
+                    Ven
+                    Sam
+                ],
+                [ ((7<hour>, 00<minute>), (21<hour>, 00<minute>)) ]
                 [ Dim ], [ ((9<hour>, 00<minute>), (13<hour>, 00<minute>)) ]
             ]
             None
@@ -243,7 +350,12 @@ module Program =
             "https://pharmaciecentrale-amboise.pharmavie.fr/"
             [
                 [ Lun ], [ ((14<hour>, 00<minute>), (19<hour>, 30<minute>)) ]
-                [ Mar; Mer; Jeu; Ven ],
+                [
+                    Mar
+                    Mer
+                    Jeu
+                    Ven
+                ],
                 [
                     ((9<hour>, 00<minute>), (12<hour>, 30<minute>))
                     ((14<hour>, 00<minute>), (19<hour>, 30<minute>))
@@ -268,11 +380,27 @@ module Program =
             @"Amboise"
             "https://www.fitupclub.fr/"
             [
-                [ Lun; Mar; Mer; Jeu; Ven ], [ ((9<hour>, 00<minute>), (21<hour>, 00<minute>)) ]
+                [
+                    Lun
+                    Mar
+                    Mer
+                    Jeu
+                    Ven
+                ],
+                [ ((9<hour>, 00<minute>), (21<hour>, 00<minute>)) ]
                 [ Sam ], [ ((9<hour>, 00<minute>), (13<hour>, 00<minute>)) ]
             ]
             (Some [
-                [ Lun; Mar; Mer; Jeu; Ven; Sam; Dim ], [ ((6<hour>, 00<minute>), (23<hour>, 00<minute>)) ]
+                [
+                    Lun
+                    Mar
+                    Mer
+                    Jeu
+                    Ven
+                    Sam
+                    Dim
+                ],
+                [ ((6<hour>, 00<minute>), (23<hour>, 00<minute>)) ]
             ])
         Place.create
             "🛒"
@@ -280,7 +408,15 @@ module Program =
             @"Tours Nord"
             "https://www.decathlon.fr/"
             [
-                [ Lun; Mar; Mer; Jeu; Ven; Sam ], [ ((9<hour>, 30<minute>), (19<hour>, 30<minute>)) ]
+                [
+                    Lun
+                    Mar
+                    Mer
+                    Jeu
+                    Ven
+                    Sam
+                ],
+                [ ((9<hour>, 30<minute>), (19<hour>, 30<minute>)) ]
             ]
             None
         Place.create
@@ -289,7 +425,13 @@ module Program =
             @"rue Nationale"
             "https://lapassiondufromage.com/"
             [
-                [ Mar; Mer; Jeu; Ven; Sam ],
+                [
+                    Mar
+                    Mer
+                    Jeu
+                    Ven
+                    Sam
+                ],
                 [
                     ((9<hour>, 00<minute>), (13<hour>, 00<minute>))
                     ((15<hour>, 30<minute>), (19<hour>, 00<minute>))
@@ -303,7 +445,15 @@ module Program =
             @"Librairie Amboise"
             "http://luapprouve.com/"
             [
-                [ Lun; Mar; Mer; Jeu; Ven; Sam ], [ ((9<hour>, 00<minute>), (19<hour>, 00<minute>)) ]
+                [
+                    Lun
+                    Mar
+                    Mer
+                    Jeu
+                    Ven
+                    Sam
+                ],
+                [ ((9<hour>, 00<minute>), (19<hour>, 00<minute>)) ]
                 [ Dim ], [ ((9<hour>, 00<minute>), (12<hour>, 30<minute>)) ]
             ]
             None
@@ -313,22 +463,36 @@ module Program =
             @"Amboise"
             "https://magasins.bureau-vallee.fr/fr/france-33/indre-et-loire-37/amboise-37003/amboise-BV507"
             [
-                [ Lun; Mar; Mer; Jeu; Ven; Sam ],
+                [
+                    Lun
+                    Mar
+                    Mer
+                    Jeu
+                    Ven
+                    Sam
+                ],
                 [
                     ((9<hour>, 00<minute>), (12<hour>, 30<minute>))
                     ((14<hour>, 00<minute>), (19<hour>, 00<minute>))
                 ]
             ]
             None
-            
+
         Place.create
             "🎲"
             @"L'Interlude"
             @"Amboise"
             "https://www.facebook.com/linterlude37/"
             [
-                [ Mar; Mer; Ven; Sam ], [ ((10<hour>, 00<minute>), (19<hour>, 00<minute>)) ]
-                [ Jeu ], [
+                [
+                    Mar
+                    Mer
+                    Ven
+                    Sam
+                ],
+                [ ((10<hour>, 00<minute>), (19<hour>, 00<minute>)) ]
+                [ Jeu ],
+                [
                     ((10<hour>, 00<minute>), (13<hour>, 00<minute>))
                     ((14<hour>, 00<minute>), (19<hour>, 00<minute>))
                 ]

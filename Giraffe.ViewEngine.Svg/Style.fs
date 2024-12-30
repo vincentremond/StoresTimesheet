@@ -31,12 +31,20 @@ module Style =
             | Middle -> "middle"
             | End -> "end"
 
-    type CssProperty = { Name: string; Value: string }
-    with
-        static member value x = $"%s{x.Name}:%s{x.Value}"
-        static member values x = x |> List.map CssProperty.value |> String.concat ";"
+    type CssProperty = {
+        Name: string
+        Value: string
+    } with
 
-    let css name value = { Name = name; Value = value }
+        static member value x = $"%s{x.Name}:%s{x.Value}"
+
+        static member values x =
+            x |> List.map CssProperty.value |> String.concat ";"
+
+    let css name value = {
+        Name = name
+        Value = value
+    }
 
     let _font_size size = css "font-size" (FontSize.value size)
 

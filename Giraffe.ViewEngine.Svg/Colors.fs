@@ -49,8 +49,8 @@ type Color =
     static member value =
         function
         | NamedColor color -> NamedColor.value color
-        | RGB (r, g, b) -> $"rgb(%d{r}, %d{g}, %d{b})"
-        | HSL (h, s, l) -> $"hsl(%d{h}, %d{s}%%, %d{l}%%)"
+        | RGB(r, g, b) -> $"rgb(%d{r}, %d{g}, %d{b})"
+        | HSL(h, s, l) -> $"hsl(%d{h}, %d{s}%%, %d{l}%%)"
         | HEX hex -> hex
         | Url url -> $"url(%s{url})"
         | None -> "none"

@@ -37,9 +37,9 @@ module Attributes =
         static member value =
             function
             | Center -> "center"
-            | Positions (x, y) -> $"%s{TransformOriginPosition.value x} %s{TransformOriginPosition.value y}"
-            | XY (x, y) -> $"%s{Unit.value x} %s{Unit.value y}"
-            | XYZ (x, y, z) -> $"%s{Unit.value x} %s{Unit.value y} %s{Unit.value z}"
+            | Positions(x, y) -> $"%s{TransformOriginPosition.value x} %s{TransformOriginPosition.value y}"
+            | XY(x, y) -> $"%s{Unit.value x} %s{Unit.value y}"
+            | XYZ(x, y, z) -> $"%s{Unit.value x} %s{Unit.value y} %s{Unit.value z}"
 
         static member positions v h = Positions(v, h)
         static member xy x y = XY(x, y)
@@ -83,16 +83,17 @@ module Attributes =
     let _values = attr "values"
     let _width = sizeAttr "width"
     let _height = sizeAttr "height"
+
     let _view_box minX minY width height =
         attr "viewBox" $"%f{minX} %f{minY} %f{width} %f{height}"
+
     let _preserve_aspect_ratio = attr "preserveAspectRatio"
     let _id = attr "id"
     let _cx = sizeAttr "cx"
     let _cy = sizeAttr "cy"
     let _r = sizeAttr "r"
-    
-    
-    let _style cssProperties = 
+
+    let _style cssProperties =
         attr "style" (CssProperty.values cssProperties)
 
     let _d commands = attr "d" (PathCommand.values commands)

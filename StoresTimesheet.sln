@@ -18,6 +18,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{987471
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Giraffe.ViewEngine.Svg", "Giraffe.ViewEngine.Svg\Giraffe.ViewEngine.Svg.fsproj", "{62FDED2C-7204-41D9-96F9-6E904ACB6E95}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pinicola.FSharp", "Pinicola.FSharp", "{5536A715-8270-4A7B-AAF0-38F5B87F9E5B}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Pinicola.FSharp", "Pinicola.FSharp\Pinicola.FSharp\Pinicola.FSharp.fsproj", "{A7F4D496-21E2-449A-B905-608EB1B9926E}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Pinicola.FSharp.SpectreConsole", "Pinicola.FSharp\Pinicola.FSharp.SpectreConsole\Pinicola.FSharp.SpectreConsole.fsproj", "{0FF8B362-D4A7-42D8-B78B-7428F6819DBD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,5 +45,17 @@ Global
 		{62FDED2C-7204-41D9-96F9-6E904ACB6E95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62FDED2C-7204-41D9-96F9-6E904ACB6E95}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62FDED2C-7204-41D9-96F9-6E904ACB6E95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7F4D496-21E2-449A-B905-608EB1B9926E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7F4D496-21E2-449A-B905-608EB1B9926E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7F4D496-21E2-449A-B905-608EB1B9926E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7F4D496-21E2-449A-B905-608EB1B9926E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FF8B362-D4A7-42D8-B78B-7428F6819DBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FF8B362-D4A7-42D8-B78B-7428F6819DBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FF8B362-D4A7-42D8-B78B-7428F6819DBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FF8B362-D4A7-42D8-B78B-7428F6819DBD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A7F4D496-21E2-449A-B905-608EB1B9926E} = {5536A715-8270-4A7B-AAF0-38F5B87F9E5B}
+		{0FF8B362-D4A7-42D8-B78B-7428F6819DBD} = {5536A715-8270-4A7B-AAF0-38F5B87F9E5B}
 	EndGlobalSection
 EndGlobal

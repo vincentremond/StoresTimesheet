@@ -9,7 +9,10 @@ module Render =
         RenderView.AsString.htmlDocument
         <| html [] [
             head [] [
-                meta [ _httpEquiv "refresh"; _content "5" ]
+                meta [
+                    _httpEquiv "refresh"
+                    _content "5"
+                ]
 
             ]
             body [] [

@@ -58,7 +58,7 @@ module PlaceView =
             ] [
                 tspan [
                     _style [
-                        _font_size (FontSize.absolute Small)
+                        _font_size (FontSize.absolute FontSizeAbsolute.Small)
                         _font_weight Bold
                         _fill colorSet.PrimaryText
                     ]
@@ -79,7 +79,7 @@ module PlaceView =
                     place.OpeningHours, colorSet.Opened
                 ] do
 
-                for OpenPeriod (startTime, endTime) in openingHours do
+                for OpenPeriod(startTime, endTime) in openingHours do
                     let start = TimeOnly.init C.firstHour 0<minute>
                     let fromX = C.hoursStartX + ((startTime - start).TotalHours * C.hourWidth)
                     let width = (endTime - startTime).TotalHours * C.hourWidth
