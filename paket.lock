@@ -11,7 +11,7 @@ GROUP Tests
 STORAGE: NONE
 NUGET
   remote: https://api.nuget.org/v3/index.json
-    coverlet.collector (6.0.2)
+    coverlet.collector (6.0.3)
     FSharp.Core (9.0.100) - restriction: >= netstandard2.0
     Microsoft.CodeCoverage (17.12) - restriction: || (>= net462) (>= netcoreapp3.1)
     Microsoft.NET.Test.Sdk (17.12)
